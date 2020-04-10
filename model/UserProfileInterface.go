@@ -2,5 +2,6 @@ package model
 
 
 type UserProfileInterface interface {
-	GetUsername() 	string
+	// GetUsername() 	string
+	Insert() (UserProfile, error)
 }

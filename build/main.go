@@ -17,23 +17,26 @@ func main () {
 	}
 	fmt.Println("Database connected")
 
-	fmt.Println("tes")
+	// sample login logic
 
-	var userProfile model.UserProfile
-	var userProfile2 model.UserProfile
+	// var userProfile model.UserProfile
+	userProfile := model.UserProfile{
+		Email: "canzinzzzide@yahoo.co.id",
+		Password: "password",
+		Address: "address",
+	}
 
 	var opt model.UserProfileContractor
 
-	userProfile.Create("michaelchandrag", "password")
-	userProfile2.Create("michaelchandrag2", "password")
+	// userProfile.Create("michaelchandrag", "password")
 	
 	var _userProfile model.UserProfileInterface
-	var _userProfile2 model.UserProfileInterface
 	_userProfile = userProfile
-	_userProfile2 = userProfile2
 
-	opt.AddContractor(_userProfile)
-	opt.AddContractor(_userProfile2)
-
-	fmt.Println(opt.GetUserProfiles())
+	result, err := opt.InsertContractor(_userProfile)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(result)
+	// fmt.Println(opt.GetUserProfiles())
 }
