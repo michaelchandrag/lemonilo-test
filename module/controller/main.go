@@ -186,7 +186,7 @@ func Login (c *gin.Context) {
 
 	c.JSON(200, gin.H{
 		"success": true,
-		"message": "Success create user profile.",
+		"message": "Success login.",
 		"data": result,
 	})
 	return
