@@ -37,3 +37,11 @@ func (us *UserProfileContractor) UpdateContractor(id int, upi UserProfileInterfa
 	}
 	return nil
 }
+
+func (us *UserProfileContractor) DeleteContractor(id int, upi UserProfileInterface) (error) {
+	err := upi.Delete(id)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return nil
+}

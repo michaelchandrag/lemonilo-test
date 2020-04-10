@@ -58,3 +58,19 @@ func (this UserProfile) Update(id int) error {
 		}
 		return nil
 }
+
+func (this UserProfile) Delete(id int) error {
+	query := fmt.Sprintf(`
+			DELETE FROM
+				user_profile
+			WHERE
+				user_id = ?
+		`)
+	_, err := db.Engine.Exec(query,
+				id)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
+	return nil
+}

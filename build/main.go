@@ -36,7 +36,7 @@ func main () {
 	fmt.Println(result) */
 
 	// sample update logic
-	userID := 1
+	/* userID := 1
 	userProfile := model.UserProfile{
 		Email: "canzinzzzide@yahoo.co.id",
 		Password: "newPassword",
@@ -51,7 +51,19 @@ func main () {
 	if err != nil {
 		fmt.Println(err)
 	}
+	return */
+
+	// sample delete logic
+	userID := 1
+	userProfile := model.UserProfile{
+		UserID: userID,
+	}
+
+	var opt model.UserProfileContractor
+	var _userProfile model.UserProfileInterface = userProfile
+	err = opt.DeleteContractor(userID, _userProfile)
+	if err != nil {
+		fmt.Println(err)
+	}
 	return
-
-
 }
