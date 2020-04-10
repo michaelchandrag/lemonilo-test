@@ -74,3 +74,38 @@ func (this UserProfile) Delete(id int) error {
 	}
 	return nil
 }
+
+func (this UserProfile) Find() (results []UserProfile, err error) {
+	query := `
+			SELECT
+				user_id,
+				email,
+				password,
+				address
+			FROM
+				user_profile
+		`
+	err = db.Engine.Select(&results, query)
+	if err != nil {
+		return nil, err
+	}
+	return results, nil
+}
+
+func (this UserProfile) FindByEmail(email string) (result UserProfile, err error) {
+	query := `
+		SELECT
+			user_id,
+			email,
+			password,
+			address
+		FROM
+			user_profile
+		WHERE
+			email = ?
+	`
+	if err := db.Engine.Get(&this, query, email); err != nil {
+		return this, err
+	}
+	return this, nil
+}
