@@ -28,3 +28,12 @@ func (us *UserProfileContractor) InsertContractor(upi UserProfileInterface) (res
 	}
 	return result, err
 }
+
+func (us *UserProfileContractor) UpdateContractor(id int, upi UserProfileInterface) (error) {
+	err := upi.Update(id)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
+	return nil
+}

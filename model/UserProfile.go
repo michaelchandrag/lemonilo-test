@@ -13,26 +13,6 @@ type UserProfile struct {
 	Address 	string 		`json:"address" db:"address"`
 }
 
-/* func (this *UserProfile) Create(username string, password string) {
-	this.Username = username
-	this.Password = password
-}
-
-func (this UserProfile) GetUsername() string {
-	return this.Username
-}
-
-func (this *UserProfile) GetPassword() string {
-	return this.Password
-}
-
-func (this *UserProfile) GetContents() UserProfile {
-	return UserProfile{
-		Username: this.GetUsername(),
-		Password: this.GetPassword(),
-	}
-} */
-
 func (this UserProfile) Insert() (result UserProfile, err error) {
 	query := fmt.Sprintf(`
 			INSERT into user_profile (
@@ -56,4 +36,25 @@ func (this UserProfile) Insert() (result UserProfile, err error) {
 		Password: this.Password,
 	}
 	return result, nil
+}
+
+func (this UserProfile) Update(id int) error {
+	query := fmt.Sprintf(`
+			UPDATE 
+				user_profile
+			SET
+				email = ?,
+				password = ?,
+				address = ?
+			WHERE
+				user_id = ?
+		`)
+		_, err := db.Engine.Exec(query,
+				this.Email, this.Password, this.Address,
+				id)
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
+		return nil
 }

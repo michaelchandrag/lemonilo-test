@@ -17,18 +17,14 @@ func main () {
 	}
 	fmt.Println("Database connected")
 
-	// sample login logic
-
-	// var userProfile model.UserProfile
-	userProfile := model.UserProfile{
+	// sample insert logic
+	/* userProfile := model.UserProfile{
 		Email: "canzinzzzide@yahoo.co.id",
 		Password: "password",
 		Address: "address",
 	}
 
 	var opt model.UserProfileContractor
-
-	// userProfile.Create("michaelchandrag", "password")
 	
 	var _userProfile model.UserProfileInterface
 	_userProfile = userProfile
@@ -37,6 +33,25 @@ func main () {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(result)
-	// fmt.Println(opt.GetUserProfiles())
+	fmt.Println(result) */
+
+	// sample update logic
+	userID := 1
+	userProfile := model.UserProfile{
+		Email: "canzinzzzide@yahoo.co.id",
+		Password: "newPassword",
+		Address: "newAddress",
+	}
+
+	var opt model.UserProfileContractor
+
+	var _userProfile model.UserProfileInterface = userProfile
+
+	err = opt.UpdateContractor(userID, _userProfile)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return
+
+
 }
