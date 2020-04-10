@@ -3,7 +3,10 @@
 ### Installation
 clone this repo under `{GOPATH}/src/github.com/michaelchandrag/lemonilo-test`
 
+set up MySQL database, dump table can be found under `database/lemonilo.sql`
+
 set up environment variable at `.env`
+
 
 run `./run`
 
